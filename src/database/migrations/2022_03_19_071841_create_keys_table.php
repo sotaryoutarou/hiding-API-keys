@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('keyss', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('endpoint_id');
+            $table->string('key');
+            $table->string('value');
             $table->timestamps();
+
+            $table->foreign('endpoint_id')->references('id')->on('endpoints');            
         });
     }
 
